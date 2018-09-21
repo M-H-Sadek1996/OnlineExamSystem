@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -24,6 +25,61 @@ namespace OnlineExamSystem.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+        public ActionResult ExamEntry()
+        {
+            return View();
+        }
+        public ActionResult ParticipantEntry()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ParticipantEntry(HttpPostedFileBase file)
+        {
+            var path = "";
+            if (file != null)
+            {
+                if (file.ContentLength > 0)
+                {
+                    if (Path.GetExtension(file.FileName).ToLower() == ".jpg"
+                        || Path.GetExtension(file.FileName).ToLower() == ".png"
+                        || Path.GetExtension(file.FileName).ToLower() == ".gif"
+                        || Path.GetExtension(file.FileName).ToLower() == ".jpeg")
+                    {
+                        path = Path.Combine(Server.MapPath("~/Content/Images"), file.FileName);
+                        file.SaveAs(path);
+
+                    }
+                }
+            }
+            return View();
+        }
+        public ActionResult TrainerEntry()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult TrainerEntry(HttpPostedFileBase file)
+        {
+            var path = "";
+            if (file != null)
+            {
+                if (file.ContentLength > 0)
+                {
+                    if (Path.GetExtension(file.FileName).ToLower() == ".jpg"
+                        || Path.GetExtension(file.FileName).ToLower() == ".png"
+                        || Path.GetExtension(file.FileName).ToLower() == ".gif"
+                        || Path.GetExtension(file.FileName).ToLower() == ".jpeg")
+                    {
+                        path = Path.Combine(Server.MapPath("~/Content/Images"), file.FileName);
+                        file.SaveAs(path);
+
+                    }
+                }
+            }
             return View();
         }
     }

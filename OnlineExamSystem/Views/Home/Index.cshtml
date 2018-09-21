@@ -1,31 +1,219 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿@model OnlineExamSystem.Models.StudentEntry
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function(){
+            DisableTabs();
+            function DisableTabs() {
+                $('#BasicInfo').hide();
+                $('#AssignTrainers').hide();
+                $('#CreatExam').hide();
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+
+            }
+            $('.nav-tabs li a[href="#BasicInfo"]').on('click', function (event) {
+                DisableTabs();
+                var tabid = $(this).attr('href');
+                $('#l1').addClass('active');
+                $('#l1').siblings().removeClass('active');
+                var tabpanel = $('' + tabid).show();
+                $(tabpanel).addClass('tab-pan fade in active');
+            )
+        };
+        $('.nav-tabs li a[href="#AssignTrainers"]').on('click', function (event) {
+            DisableTabs();
+            var tabid = $(this).attr('href');
+            $('#l2').addClass('active');
+            $('#l2').siblings().removeClass('active');
+            var tabpanel = $('' + tabid).show();
+            $(tabpanel).addClass('tab-pan fade in active');
+            )};
+        $('.nav-tabs li a[href="#CreatExam"]').on('click', function (event) {
+            DisableTabs();
+            var tabid = $(this).attr('href');
+            $('#l3').addClass('active');
+            $('#l3').siblings().removeClass('active');
+            var tabpanel = $('' + tabid).show();
+            $(tabpanel).addClass('tab-pan fade in active');
+            )};
+
+        });
+    </script>
+
+</head>
+<body>
+    <div class="jumbotron">
+
+        <h1>Course Name</h1>
+        <br />
+        <div>
+
+            <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+            <script src="~/Scripts/bootstrap.min.js"></script>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li id="l1" class="active"><a href="#BasicInfo" aria-controls="Basic Info" role="tab" data-toggle="tab">Basic Info</a></li>
+                <li id="l2"><a href="#AssignTrainers" aria-controls="AssignTrainers" role="tab" data-toggle="tab">Assign Trainers</a></li>
+                <li id="l3"><a href="#CreatExam" aria-controls="CreatExam" role="tab" data-toggle="tab">Creat Exam</a></li>
+
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="BasicInfo">
+                    <br />
+                    @using (Html.BeginForm("Instruction", "Home", FormMethod.Post))
+                    {
+                        <div class="container">
+                            <div class="row form-horizontal">
+
+                                <div class="form-group">
+                                    <div class="col-md-3">@Html.Label("Organization")</div>
+                                    <div class="col-md-5">
+                                        <select>
+                                            <option>Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-3">@Html.Label("Name")</div>
+                                    <div class="col-md-5">@Html.TextBox("ahdgh")</div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-3">@Html.Label("Code")</div>
+                                    <div class="col-md-5">@Html.TextBox("ahdgh")</div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-3">@Html.Label("Course Duration")</div>
+                                    <div class="col-md-5">@Html.TextBox("ahdgh")</div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-3">@Html.Label("Credit")</div>
+                                    <div class="col-md-5">@Html.TextBox("ahdgh")</div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-3"></div>
+                                    <div class="col-md-5"><input type="submit" value="Save" class="btn btn-primary" /></div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    }
+                </div>
+                <div role="tabpanel" class="tab-pane" id="AssignTrainers">
+                    <br />
+                    @using (Html.BeginForm("Instruction", "Home", FormMethod.Post))
+                    {
+                        <div class="container">
+                            <div class="row form-horizontal">
+
+                                <div class="form-group">
+                                    <div class="col-md-3">@Html.Label("participant")</div>
+                                    <div class="col-md-5">
+                                        <select>
+                                            <option>Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2"></div>
+                                    <div class="col-md-offset-4"><input type="submit" value="Add" class="btn btn-primary" /></div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    }
+
+
+                </div>
+                <div role="tabpanel" class="tab-pane" id="CreatExam">
+
+                    
+                    
+                        <div class="container">
+                            <div class="row form-horizontal">
+
+                                <div class="form-group">
+                                    <div class="col-md-3">@Html.Label("Organization")</div>
+                                    <div class="col-md-5">
+                                        <select>
+                                            <option>current organization</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="container">
+                                    <div class="row form-horizontal">
+
+                                        <div class="form-group">
+                                            <div class="col-md-3">@Html.Label("course")</div>
+                                            <div class="col-md-5">
+                                                <select>
+                                                    <option>current course</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="container">
+                                            <div class="row form-horizontal">
+
+                                                <div class="form-group">
+                                                    <div class="col-md-3">@Html.Label("Exam Type")</div>
+                                                    <div class="col-md-5">
+                                                        <select>
+                                                            <option>Class Test,Lab Test</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="col-md-3">@Html.Label("Code")</div>
+                                                    <div class="col-md-5">@Html.TextBox("ahdgh")</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-3">@Html.Label("Topic")</div>
+                                                    <div class="col-md-5">@Html.TextBox("ahdgh")</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-3">@Html.Label("Full Marks ")</div>
+                                                    <div class="col-md-5">@Html.TextBox("ahdgh")</div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-3">@Html.Label("Duration")</div>
+                                                    <div class="col-md-5">@Html.TextBox("ahdgh")</div>
+                                                </div>
+
+                                               
+
+                                                <div class="form-group">
+                                                    <div class="col-md-3"></div>
+                                                    <div class="col-md-5"><input type="submit" value="Save" class="btn btn-primary" /></div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                </div>
+
+            </div>
+
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+
+</body>
+</html>
